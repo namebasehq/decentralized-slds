@@ -157,6 +157,8 @@ The challenge of building fully trustless and cross-chain TLD staking has so far
 
 The first phase is a custodied and thus fairly centralized solution. While we want to move quickly to bring dSLDs to fruition, we need to get things right before they are written in stone (or blocks). Using staked TLDs from Namebase is just the shortest path to a first iteration. Once the next phase is ready, TLDs can be moved to a more decentralized solution.
 
+**NOTE:** To skip the phases and go full-send decentralization, you can of course send your TLD to the "anyone-can-renew" script address. We will offer the option to do this for you during the Namebase TLD staking process.
+
 <br>
 
 ## Phase 2: Multisig TLD Bridge
