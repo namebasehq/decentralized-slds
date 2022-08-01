@@ -267,13 +267,13 @@ An SDK code library with documentation and examples for implementing **Login wit
 
 Determine what if any design considerations are needed for Handshake domains to be compatible as W3C DIDs.
 
-* W3C DID Spec
+* W3C DID Spec  
 [https://www.w3.org/TR/did-core/](https://www.w3.org/TR/did-core/)
 
-* Draft EIP-1056: Lightweight Identity 
+* Draft EIP-1056: Lightweight Identity  
 [https://github.com/ethereum/EIPs/issues/1056](https://github.com/ethereum/EIPs/issues/1056)
 
-* "Ethr" DID Resolver
+* "Ethr" DID Resolver  
 [https://github.com/decentralized-identity/ethr-did-resolver/blob/master/doc/did-method-spec.md](https://github.com/decentralized-identity/ethr-did-resolver/blob/master/doc/did-method-spec.md)
 
 
@@ -284,32 +284,32 @@ Determine what if any design considerations are needed for Handshake domains to 
 
 # References
 
-* HIP-0005: Alternative Namespace Resolution
+* HIP-0005: Alternative Namespace Resolution  
 [https://hsd-dev.org/HIPs/proposals/0005/](https://hsd-dev.org/HIPs/proposals/0005/)
 
-* EIP-721: Non-Fungible Token Standard + Metadata
+* EIP-721: Non-Fungible Token Standard + Metadata  
 [https://eips.ethereum.org/EIPS/eip-721](https://eips.ethereum.org/EIPS/eip-721)
 
-* EIP-137: Ethereum Domain Name Service
+* EIP-137: Ethereum Domain Name Service  
 [https://eips.ethereum.org/EIPS/eip-137](https://eips.ethereum.org/EIPS/eip-137)
 
-* EIP-634: Storage of text records in ENS
+* EIP-634: Storage of text records in ENS  
 [https://eips.ethereum.org/EIPS/eip-634](https://eips.ethereum.org/EIPS/eip-634)
 
-* EIP-1185: Storage of DNS Records in ENS
+* EIP-1185: Storage of DNS Records in ENS  
 [https://eips.ethereum.org/EIPS/eip-1185](https://eips.ethereum.org/EIPS/eip-1185)
 
-* IANA DNS Records
+* IANA DNS Records  
 [https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4)
 
-* EIP-2981: NFT Royalty Standard
+* EIP-2981: NFT Royalty Standard  
 [https://eips.ethereum.org/EIPS/eip-2981](https://eips.ethereum.org/EIPS/eip-2981)
 
-* OpenSea Metadata Standards
+* OpenSea Metadata Standards  
 [https://docs.opensea.io/docs/metadata-standards](https://docs.opensea.io/docs/metadata-standards)
 
-* EIP-155: Chain ID Standards
+* EIP-155: Chain ID Standards  
 [https://eips.ethereum.org/EIPS/eip-155](https://eips.ethereum.org/EIPS/eip-155)
 
-* BIP-0044: CoinTypes
+* BIP-0044: CoinTypes  
 [https://github.com/satoshilabs/slips/blob/master/slip-0044.md](https://github.com/satoshilabs/slips/blob/master/slip-0044.md)
