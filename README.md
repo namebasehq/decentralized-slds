@@ -252,11 +252,11 @@ We will see interesting implementations like exclusive TLDs that don’t allow p
 
 An SDK code library with documentation and examples for implementing **Login with Handshake.** This is different than the existing implementations using Bob wallet as it will use EVM compatible wallets for authentication, e.g. MetaMask or WalletConnect. We can support TLDs as identity in addition to SLDs. We could also provide an example OAUTH identity provider for implementing SSO.  
 
-* EIP-4361: Sign-In with Ethereum
-[https://eips.ethereum.org/EIPS/eip-4361](https://eips.ethereum.org/EIPS/eip-4361)
+* EIP-4361: Sign-In with Ethereum  
+[https://eips.ethereum.org/EIPS/eip-4361](https://eips.ethereum.org/EIPS/eip-4361)  
 [https://login.xyz/](https://login.xyz/)
 
-* Login with Unstoppable
+* Login with Unstoppable  
 [https://docs.unstoppabledomains.com/login-with-unstoppable/](https://docs.unstoppabledomains.com/login-with-unstoppable/)
 
 <br>
