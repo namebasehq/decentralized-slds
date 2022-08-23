@@ -46,7 +46,7 @@ A multisig wallet controlled by trusted Handshake developers and stakeholders wi
 
 
 * **SLDs must cost at least $1/yr** - this hopefully reduces the number of spammy registrations, and ensures Dev Fund always gets something.
-* **5% or $0.50 (whichever is greater) of SLD registration/renewal to Dev Fund**
+* **5% or $0.20 (whichever is greater) of SLD registration/renewal to Dev Fund**
 * **(Optional) 5% royalties from aftermarket sales to Dev Fund.** This will be the default, but TLD owners can override this in their TldPricingStrategy. Since EIP-2981 royalties cannot be split, Dev Fund will not receive any royalties in that case. 
 * **Claiming and Minting TLDs cost $100/ea** - this hopefully increases the quality of TLDs that are bridged and reduces the number of TLDs that need to be managed and renewed on Handshake side 
 
@@ -75,13 +75,13 @@ For Handshake NFTs, the default metadata will be served fully on-chain with an S
 
 # DNS Resolution
 
-Handshake NFT domains will support all valid DNS records via EIP-1185, (e.g. A, TXT, NS, DS, etc.).   Domain owners can choose to manage their DNS records on-chain, obviating the need for DNSSEC, or delegate to external nameservers like traditional domains. 
+Handshake NFT domains will support all valid DNS records via [EIP-1185](https://eips.ethereum.org/EIPS/eip-1185), (e.g. A, TXT, NS, DS, etc.).   Domain owners can choose to manage their DNS records on-chain, obviating the need for DNSSEC, or delegate to external nameservers like traditional domains. 
 
-DNS resolution from Handshake clients can be accomplished with HIP-005. A new suffix may be required to support SLD resolution on chains other than mainnet Ethereum, e.g `._evm`, and the NS delegation would contain the EIP-155 Chain ID. For example, with Handshake TLD .foo, using Chain ID 10 (Optimism L2), and contract address `0x36fc69f0983E536D1787cC83f481581f22CCA2A1`, the record might be:
+DNS resolution from Handshake clients can be accomplished with [HIP-005](https://hsd-dev.org/HIPs/proposals/0005/). A new suffix will be required to indicate SLD resolution on chains other than mainnet Ethereum, e.g `._optimism`. For example, with Handshake TLD `.mytld`, using Optimism L2, and contract address `0x000000000000000000000C83f481581f22CCA2A1`, the record would be:
 
 
 ```
-foo.  3600  IN   NS   10.0x36fc69f0983E536D1787cC83f481581f22CCA2A1._evm.
+mytld.  3600  IN   NS   0x000000000000000000000C83f481581f22CCA2A1._optimism.
 ```
 
 
@@ -183,12 +183,12 @@ I am just throwing these names out there, but ultimately we need willing partici
 
 ### TLD Bridge Staking & Approval
 
-We’ll create a portal that helps TLD owners configure and stake their TLD, and subsequently claim ownership of the TLD NFT on the EVM side. The configuration is similar to [Impervious Registry](https://registry.impervious.com/stake), with slight modifications for specifying L2 Chain ID:
+We’ll create a portal that helps TLD owners configure and stake their TLD, and subsequently claim ownership of the TLD NFT on the EVM side. The configuration is similar to [Impervious Registry](https://registry.impervious.com/stake), with slight modifications for specifying L2 Chain:
 
 **NS Record** (HIP-005 compatible, see DNS Resolution above)
 
 ```
-10.0x36fc69f0983E536D1787cC83f481581f22CCA2A1._evm.
+0x000000000000000000000C83f481581f22CCA2A1._optimism.
 ```
 
 
@@ -196,7 +196,7 @@ We’ll create a portal that helps TLD owners configure and stake their TLD, and
 
 
 ```
-eth-claim:10.0xE3D2b657c45613d30292Fd67Ef40DAB043B70706
+eth-claim:0xE3D2b657c45613d30292Fd67Ef40DAB043B70706
 ```
 
 
@@ -222,19 +222,18 @@ The signers need to approve TLDs sent to the multisig. They can use the same por
 # Some Important Contracts
 
 ### TldManager
-This contract controls which TLDs can be minted and claimed. A whitelisted set of TldProvider(s) addresses are able to add new TLD claims. Initially, Namebase or Multisig will be the only trusted TldProvider(s). Later on this role can hopefully be replaced by a trustless oracle which monitors the Handshake chain directly.
+This contract controls which TLDs can be minted and claimed. A whitelisted set of `TldProvider(s)` addresses are able to add new TLD claims. Initially, Namebase or Multisig will be the only trusted `TldProvider(s)`. Later on this role can hopefully be replaced by a trustless oracle which monitors the Handshake chain directly.
 
 ### RegistrationManager
 
-The RegistrationManager controls the fees and conditions under which SLDs can be registered and renewed. This contract combines the required BasePricingStrategy and user-controllable TldPricingStrategy to come up with the SLD registration/renewal costs and fee distribution. Once a domain has been registered, its annual renewal price will never change. TLDs can only increase the price of registration and renewal for *new* SLDs.
+The `RegistrationManager` controls the fees and conditions under which SLDs can be registered and renewed. This contract combines the required `GlobalRegistrationStrategy` and TLD-controllable `RegistrationStrategy` to come up with the SLD registration/renewal costs. Once a domain has been registered, its annual renewal price will never change. TLDs can only increase the price of registration and renewal for *new* SLDs.
 
-
-### BasePricingStrategy
+### GlobalRegistrationStrategy
 This enforces the minimum pricing requirements (see Fees above).
 
-### TldPricingStrategy
+### RegistrationStrategy
 
-This delegated contract will have a simple interface which takes the requested domain, registration period, requesting wallet and destination wallet, and returns the registration cost and fee distribution. This gives the TLD owner flexibility to delegate to their own custom pricing strategy contract and go nuts. The default contract will provide many built-in options for the most common pricing scenarios:
+This delegated contract will have a simple interface which takes the requested domain, registration period, requesting and destination wallet, and returns the registration cost. This gives the TLD owner flexibility to create their own custom `RegistrationStrategy` contract for unique use cases. The default strategy will provide many built-in options for the most common pricing scenarios:
 
 * variable cost based on character count of domain
 * discount based on length of registration
