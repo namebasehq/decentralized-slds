@@ -77,11 +77,11 @@ For Handshake NFTs, the default metadata will be served fully on-chain with an S
 
 Handshake NFT domains will support all valid DNS records via [EIP-1185](https://eips.ethereum.org/EIPS/eip-1185), (e.g. A, TXT, NS, DS, etc.).   Domain owners can choose to manage their DNS records on-chain, obviating the need for DNSSEC, or delegate to external nameservers like traditional domains. 
 
-DNS resolution from Handshake clients can be accomplished with [HIP-005](https://hsd-dev.org/HIPs/proposals/0005/). A new suffix will be required to indicate SLD resolution on chains other than mainnet Ethereum, e.g `._optimism`. For example, with Handshake TLD `.mytld`, using Optimism L2, and contract address `0x000000000000000000000C83f481581f22CCA2A1`, the record would be:
+DNS resolution from Handshake clients can be accomplished with [HIP-005](https://hsd-dev.org/HIPs/proposals/0005/). A new suffix will be required to indicate SLD resolution on chains other than mainnet Ethereum, e.g `._op`. For example, with Handshake TLD `.mytld`, using Optimism L2, and contract address `0x000000000000000000000C83f481581f22CCA2A1`, the record would be:
 
 
 ```
-mytld.  3600  IN   NS   0x000000000000000000000C83f481581f22CCA2A1._optimism.
+mytld.  3600  IN   NS   0x000000000000000000000C83f481581f22CCA2A1._op.
 ```
 
 
